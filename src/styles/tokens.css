@@ -1,0 +1,101 @@
+@layer reset, tokens, base, components, utilities;
+
+@layer tokens {
+  :root {
+    color-scheme: light dark;
+
+    /* Type */
+    --font-display: 'Anton', 'Impact', 'Haettenschweiler', 'Arial Narrow Bold', sans-serif;
+    --font-serif: 'Fraunces Variable', 'Fraunces', Georgia, 'Times New Roman', serif;
+    --font-mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+    --font-ui: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+    --step--1: clamp(0.83rem, 0.8rem + 0.15vw, 0.9rem);
+    --step-0: clamp(1rem, 0.96rem + 0.2vw, 1.09rem);
+    --step-1: clamp(1.2rem, 1.12rem + 0.4vw, 1.4rem);
+    --step-2: clamp(1.44rem, 1.3rem + 0.7vw, 1.85rem);
+    --step-3: clamp(1.73rem, 1.5rem + 1.2vw, 2.5rem);
+    --step-4: clamp(2.2rem, 1.8rem + 2vw, 3.6rem);
+
+    /* Space */
+    --space-3xs: 0.25rem;
+    --space-2xs: 0.5rem;
+    --space-xs: 0.75rem;
+    --space-s: 1rem;
+    --space-m: 1.5rem;
+    --space-l: 2rem;
+    --space-xl: 3rem;
+    --space-2xl: 4.5rem;
+
+    --radius-s: 4px;
+    --radius-m: 10px;
+    --radius-l: 18px;
+
+    /* App chrome palette (light). Posters and tickets carry their own palettes. */
+    --color-paper: #f5f0e6;
+    --color-surface: #fffdf8;
+    --color-ink: #1c1a17;
+    --color-ink-muted: #5a5348;
+    --color-line: #d8cfbd;
+    --color-accent: #a8301d;
+    --color-accent-ink: #ffffff;
+    --color-danger: #9b1c1c;
+    --color-focus: #1d4ed8;
+    --shadow-card: 0 1px 2px rgb(28 26 23 / 0.08), 0 8px 24px -8px rgb(28 26 23 / 0.25);
+    --shadow-lift: 0 2px 4px rgb(28 26 23 / 0.1), 0 18px 36px -12px rgb(28 26 23 / 0.35);
+
+    --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
+    --duration: 180ms;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-paper: #17150f;
+      --color-surface: #221f18;
+      --color-ink: #f2ecdf;
+      --color-ink-muted: #bdb4a3;
+      --color-line: #3d382d;
+      --color-accent: #f0846f;
+      --color-accent-ink: #1c1a17;
+      --color-danger: #ff9c9c;
+      --color-focus: #8ab4ff;
+      --shadow-card: 0 1px 2px rgb(0 0 0 / 0.4), 0 8px 24px -8px rgb(0 0 0 / 0.6);
+      --shadow-lift: 0 2px 4px rgb(0 0 0 / 0.4), 0 18px 36px -12px rgb(0 0 0 / 0.7);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :root {
+      --duration: 0ms;
+    }
+  }
+
+  /* Keepsake display palettes, applied with data-theme on a ticket or poster. */
+  [data-theme='marquee'] {
+    --ks-paper: #f3e9d2;
+    --ks-ink: #1d1a16;
+    --ks-accent: #b3261e;
+    --ks-accent-2: #e9b44c;
+  }
+
+  [data-theme='riso'] {
+    --ks-paper: #f7f1e8;
+    --ks-ink: #1e3a8a;
+    --ks-accent: #c2185b;
+    --ks-accent-2: #ff8fb1;
+  }
+
+  [data-theme='midnight'] {
+    --ks-paper: #111014;
+    --ks-ink: #f4ead2;
+    --ks-accent: #e3b341;
+    --ks-accent-2: #6b5bd2;
+  }
+
+  [data-theme='garden'] {
+    --ks-paper: #eef0e1;
+    --ks-ink: #1f3a2b;
+    --ks-accent: #a54a24;
+    --ks-accent-2: #9cb36b;
+  }
+}

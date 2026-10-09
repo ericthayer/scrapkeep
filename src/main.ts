@@ -1,0 +1,9 @@
+import '@fontsource/anton/400.css';
+import '@fontsource-variable/fraunces/full.css';
+import '@fontsource-variable/fraunces/full-italic.css';
+import '@fontsource/ibm-plex-mono/400.css';
+import '@fontsource/ibm-plex-mono/600.css';
+import './styles/tokens.css';
+import './styles/base.css';
+import './styles/print.css';
+import './components/ks-app';

@@ -1,0 +1,203 @@
+@layer reset {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  body,
+  h1,
+  h2,
+  h3,
+  h4,
+  p,
+  figure,
+  blockquote,
+  dl,
+  dd,
+  ol,
+  ul {
+    margin: 0;
+  }
+
+  ol[role='list'],
+  ul[role='list'] {
+    list-style: none;
+    padding: 0;
+  }
+
+  img,
+  video,
+  svg {
+    display: block;
+    max-width: 100%;
+  }
+
+  input,
+  button,
+  textarea,
+  select {
+    font: inherit;
+    color: inherit;
+  }
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  body {
+    min-height: 100dvh;
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-ui);
+    font-size: var(--step-0);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    line-height: 1.1;
+    text-wrap: balance;
+  }
+
+  a {
+    color: inherit;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-focus);
+    outline-offset: 3px;
+  }
+
+  [hidden] {
+    display: none !important;
+  }
+}
+
+@layer components {
+  /* Buttons */
+  .ks-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2xs);
+    min-height: 44px;
+    padding: 0.5rem 1.1rem;
+    border: 2px solid var(--color-ink);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--color-ink);
+    font-weight: 600;
+    font-size: var(--step--1);
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    cursor: pointer;
+    transition:
+      background-color var(--duration) var(--ease-out),
+      transform var(--duration) var(--ease-out);
+  }
+
+  .ks-button:hover {
+    background: color-mix(in srgb, var(--color-ink) 8%, transparent);
+  }
+
+  .ks-button:active {
+    transform: translateY(1px);
+  }
+
+  .ks-button--primary {
+    border-color: var(--color-accent);
+    background: var(--color-accent);
+    color: var(--color-accent-ink);
+  }
+
+  .ks-button--primary:hover {
+    background: color-mix(in srgb, var(--color-accent) 88%, var(--color-ink));
+  }
+
+  .ks-button--quiet {
+    border-color: transparent;
+  }
+
+  .ks-button--danger {
+    border-color: var(--color-danger);
+    color: var(--color-danger);
+  }
+
+  .ks-button--small {
+    min-height: 36px;
+    padding: 0.25rem 0.8rem;
+  }
+
+  /* Form fields */
+  .ks-field {
+    display: grid;
+    gap: var(--space-3xs);
+  }
+
+  .ks-field__label,
+  .ks-fieldset__legend {
+    font-size: var(--step--1);
+    font-weight: 600;
+  }
+
+  .ks-field__hint {
+    color: var(--color-ink-muted);
+    font-size: var(--step--1);
+  }
+
+  .ks-input {
+    width: 100%;
+    min-height: 44px;
+    padding: 0.55rem 0.75rem;
+    border: 1.5px solid var(--color-line);
+    border-radius: var(--radius-s);
+    background: var(--color-surface);
+  }
+
+  .ks-input:hover {
+    border-color: var(--color-ink-muted);
+  }
+
+  textarea.ks-input {
+    min-height: 6rem;
+    resize: vertical;
+  }
+
+  .ks-fieldset {
+    display: grid;
+    gap: var(--space-2xs);
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+
+  .ks-eyebrow {
+    font-family: var(--font-mono);
+    font-size: var(--step--1);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-ink-muted);
+  }
+}
+
+@layer utilities {
+  .visually-hidden {
+    position: absolute !important;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+  }
+}

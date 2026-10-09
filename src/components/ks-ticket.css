@@ -1,0 +1,177 @@
+@layer components {
+  ks-ticket {
+    display: block;
+    container-type: inline-size;
+    --ks-stub: 26%;
+    --ks-notch: 3.2cqi;
+  }
+
+  .ks-ticket {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr var(--ks-stub);
+    min-height: 36cqi;
+    background-color: var(--ks-paper);
+    background-image:
+      repeating-linear-gradient(
+        -45deg,
+        color-mix(in srgb, var(--ks-ink) 4%, transparent) 0 1px,
+        transparent 1px 7px
+      );
+    color: var(--ks-ink);
+    border-radius: 1.6cqi;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+    /* Two half-masks punch the perforation notches at the top and bottom edges. */
+    mask:
+      radial-gradient(circle var(--ks-notch) at calc(100% - var(--ks-stub)) 0, #0000 98%, #000) top / 100% 51%
+        no-repeat,
+      radial-gradient(circle var(--ks-notch) at calc(100% - var(--ks-stub)) 100%, #0000 98%, #000) bottom / 100%
+        51% no-repeat;
+  }
+
+  .ks-ticket--photo {
+    grid-template-columns: 24% 1fr var(--ks-stub);
+  }
+
+  .ks-ticket__photo {
+    position: relative;
+    overflow: hidden;
+    background: var(--ks-accent);
+  }
+
+  .ks-ticket__img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(1) contrast(1.15);
+    mix-blend-mode: multiply;
+  }
+
+  .ks-ticket__main {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2cqi;
+    padding: 3.4cqi 4cqi;
+    border-inline-start: 1.2cqi solid var(--ks-accent);
+  }
+
+  .ks-ticket--photo .ks-ticket__main {
+    border-inline-start: 0;
+  }
+
+  .ks-ticket__kicker,
+  .ks-ticket__meta dt,
+  .ks-ticket__stub {
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+  }
+
+  .ks-ticket__kicker {
+    font-size: max(10px, 1.8cqi);
+    color: var(--ks-accent);
+    font-weight: 600;
+  }
+
+  .ks-ticket__title {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(1.4rem, 7.2cqi, 4.5rem);
+    line-height: 0.95;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    overflow-wrap: anywhere;
+  }
+
+  .ks-ticket__subtitle {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: max(13px, 2.8cqi);
+    line-height: 1.2;
+  }
+
+  .ks-ticket__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1cqi 3.2cqi;
+    margin-block-start: auto;
+    padding-block-start: 1.4cqi;
+    border-block-start: 1px solid color-mix(in srgb, var(--ks-ink) 30%, transparent);
+  }
+
+  .ks-ticket__meta dt {
+    font-size: max(9px, 1.5cqi);
+    opacity: 0.8;
+  }
+
+  .ks-ticket__meta dd {
+    margin: 0;
+    font-size: max(12px, 2.2cqi);
+    font-weight: 600;
+  }
+
+  .ks-ticket__stub {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1cqi;
+    padding: 3.4cqi 2cqi;
+    border-inline-start: 2px dashed color-mix(in srgb, var(--ks-ink) 45%, transparent);
+    background: var(--ks-accent);
+    color: var(--ks-paper);
+    text-align: center;
+  }
+
+  .ks-ticket__stub-date {
+    font-family: var(--font-display);
+    font-size: clamp(1rem, 4.4cqi, 2.8rem);
+    letter-spacing: 0.02em;
+    line-height: 1;
+  }
+
+  .ks-ticket__stub-serial,
+  .ks-ticket__stub-admit {
+    font-size: max(9px, 1.5cqi);
+  }
+
+  .ks-ticket__stub-admit {
+    writing-mode: vertical-rl;
+    rotate: 180deg;
+    font-weight: 600;
+  }
+
+  /* Narrow: drop the photo column and let the ticket grow vertically. */
+  @container (max-width: 420px) {
+    .ks-ticket--photo {
+      grid-template-columns: 1fr var(--ks-stub);
+    }
+
+    .ks-ticket__photo {
+      display: none;
+    }
+
+    .ks-ticket__main {
+      padding: 5cqi;
+      gap: 2cqi;
+    }
+
+    .ks-ticket__kicker,
+    .ks-ticket__meta dt,
+    .ks-ticket__stub-serial,
+    .ks-ticket__stub-admit {
+      font-size: 10px;
+    }
+
+    .ks-ticket__title {
+      font-size: 10cqi;
+    }
+
+    .ks-ticket__stub-date {
+      font-size: 5.4cqi;
+    }
+  }
+}

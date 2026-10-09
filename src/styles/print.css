@@ -1,0 +1,91 @@
+/* Print rules: the print route (#/print/:id) produces the scrapbook PDF; any other page prints clean. */
+@page {
+  margin: 0.45in;
+}
+
+@media print {
+  :root {
+    color-scheme: light;
+    --color-paper: #fff;
+    --color-surface: #fff;
+    --color-ink: #1c1a17;
+    --color-ink-muted: #4d473d;
+    --color-line: #d8cfbd;
+    --color-accent: #a8301d;
+  }
+
+  body {
+    background: #fff;
+  }
+
+  .ks-app__header,
+  .ks-app__footer,
+  .ks-print__toolbar,
+  .ks-event__actions,
+  .ks-event__back,
+  ks-uploader,
+  .ks-card__actions,
+  .ks-card__edit {
+    display: none !important;
+  }
+
+  .ks-app__main {
+    padding: 0 !important;
+    max-width: none !important;
+  }
+
+  * {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  /* Block layout honours justify-items in current engines, which would shrink-wrap the pages. */
+  .ks-print__pages {
+    display: block;
+    justify-items: normal;
+  }
+
+  .ks-print__page,
+  .ks-print__story {
+    width: 100%;
+    padding: 0;
+    box-shadow: none;
+  }
+
+  /* A poster owns its page; a ticket shares page one with the start of the story. */
+  .ks-print__cover--poster {
+    break-after: page;
+  }
+
+  .ks-print__cover--ticket {
+    margin-block-end: 0.35in;
+  }
+
+  .ks-print__cover--poster ks-poster {
+    width: min(100%, 7.3in);
+    margin-inline: auto;
+  }
+
+  .ks-print__cover--ticket ks-ticket {
+    width: 100%;
+  }
+
+  .ks-event__summary {
+    position: static !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  .ks-story__day-heading {
+    position: static;
+  }
+
+  .ks-card,
+  .ks-timeline__link,
+  .ks-event__display {
+    box-shadow: none !important;
+    filter: none !important;
+    rotate: 0deg !important;
+    break-inside: avoid;
+  }
+}

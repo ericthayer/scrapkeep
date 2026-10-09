@@ -1,0 +1,144 @@
+@layer components {
+  ks-timeline {
+    display: block;
+    container-type: inline-size;
+    container-name: timeline;
+  }
+
+  .ks-timeline__intro {
+    display: grid;
+    gap: var(--space-2xs);
+    margin-block-end: var(--space-xl);
+  }
+
+  .ks-timeline__heading {
+    max-width: 18ch;
+    font-size: var(--step-4);
+    font-weight: 500;
+    font-variation-settings: 'SOFT' 100, 'WONK' 1;
+  }
+
+  .ks-timeline__status {
+    padding: var(--space-xl) 0;
+    color: var(--color-ink-muted);
+  }
+
+  .ks-timeline__empty {
+    display: grid;
+    justify-items: start;
+    gap: var(--space-s);
+    max-width: 52ch;
+    padding: var(--space-l);
+    border: 2px dashed var(--color-line);
+    border-radius: var(--radius-l);
+  }
+
+  .ks-timeline__empty h2 {
+    font-size: var(--step-2);
+  }
+
+  .ks-timeline__year {
+    position: relative;
+    display: grid;
+    gap: var(--space-l);
+    padding-block-end: var(--space-2xl);
+  }
+
+  .ks-timeline__year-label {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: var(--step-4);
+    line-height: 1;
+    color: var(--color-accent);
+  }
+
+  .ks-timeline__list {
+    display: grid;
+    gap: var(--space-xl);
+  }
+
+  .ks-timeline__item {
+    position: relative;
+    display: grid;
+    gap: var(--space-xs);
+  }
+
+  .ks-timeline__when {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3xs) var(--space-s);
+    font-family: var(--font-mono);
+    font-size: var(--step--1);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .ks-timeline__count {
+    color: var(--color-ink-muted);
+  }
+
+  .ks-timeline__link {
+    display: block;
+    border-radius: var(--radius-m);
+    text-decoration: none;
+    transition:
+      transform var(--duration) var(--ease-out),
+      filter var(--duration) var(--ease-out);
+    filter: drop-shadow(0 10px 18px rgb(28 26 23 / 0.22));
+  }
+
+  .ks-timeline__link:hover {
+    transform: translateY(-3px) rotate(-0.4deg);
+    filter: drop-shadow(0 18px 26px rgb(28 26 23 / 0.3));
+  }
+
+  .ks-timeline__link:focus-visible {
+    outline-offset: 6px;
+  }
+
+  .ks-timeline__item--ticket .ks-timeline__link {
+    max-width: 760px;
+  }
+
+  .ks-timeline__item--poster .ks-timeline__link {
+    max-width: 380px;
+  }
+
+  /* Wide: dates hang in a gutter on the left of a vertical spine. */
+  @container timeline (min-width: 760px) {
+    .ks-timeline__year {
+      grid-template-columns: 11rem 1fr;
+      column-gap: var(--space-l);
+    }
+
+    .ks-timeline__year-label {
+      position: sticky;
+      top: var(--space-s);
+      align-self: start;
+    }
+
+    .ks-timeline__list {
+      grid-column: 2;
+      grid-row: 1;
+      border-inline-start: 2px solid var(--color-line);
+      padding-inline-start: var(--space-l);
+    }
+
+    .ks-timeline__year-label {
+      grid-row: 1;
+      grid-column: 1;
+    }
+
+    .ks-timeline__item::before {
+      content: '';
+      position: absolute;
+      inset-inline-start: calc(-1 * var(--space-l) - 7px);
+      top: 0.35rem;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--color-accent);
+      box-shadow: 0 0 0 4px var(--color-paper);
+    }
+  }
+}

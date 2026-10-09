@@ -1,0 +1,148 @@
+@layer components {
+  ks-print-sheet {
+    display: block;
+  }
+
+  .ks-print__toolbar {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-s);
+    margin-block-end: var(--space-l);
+    padding: var(--space-xs) var(--space-s);
+    border-radius: var(--radius-m);
+    background: var(--color-surface);
+    box-shadow: var(--shadow-card);
+  }
+
+  .ks-print__tip {
+    flex: 1 1 20rem;
+    color: var(--color-ink-muted);
+    font-size: var(--step--1);
+  }
+
+  /* On screen the sheet previews as paper pages. */
+  .ks-print__pages {
+    display: grid;
+    gap: var(--space-l);
+    justify-items: center;
+  }
+
+  .ks-print__page,
+  .ks-print__story {
+    width: min(100%, 8.5in);
+    padding: 0.5in;
+    background: #fff;
+    color: #1c1a17;
+    box-shadow: var(--shadow-card);
+  }
+
+  .ks-print__cover {
+    display: grid;
+    gap: 0.35in;
+    align-content: start;
+  }
+
+  .ks-print__cover--poster {
+    justify-items: center;
+  }
+
+  .ks-print__cover--poster ks-poster {
+    width: min(100%, 7in);
+  }
+
+  .ks-print__cover-text {
+    display: grid;
+    gap: 0.1in;
+  }
+
+  .ks-print__cover-text h1 {
+    font-size: 28pt;
+  }
+
+  .ks-print__cover-text .ks-eyebrow {
+    color: #4d473d;
+  }
+
+  .ks-print__intro {
+    font-family: var(--font-serif);
+    font-size: 13pt;
+    line-height: 1.45;
+    white-space: pre-line;
+  }
+
+  .ks-print__story {
+    display: grid;
+    gap: 0.3in;
+  }
+
+  .ks-print__day {
+    display: grid;
+    gap: 0.18in;
+  }
+
+  .ks-print__day-heading {
+    padding-block-end: 0.06in;
+    border-block-end: 2px solid #1c1a17;
+    font-size: 15pt;
+    break-after: avoid;
+  }
+
+  .ks-print__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.22in;
+    align-items: start;
+  }
+
+  .ks-print__item {
+    display: grid;
+    gap: 0.06in;
+    break-inside: avoid;
+  }
+
+  .ks-print__item--image {
+    padding: 0.1in 0.1in 0.12in;
+    border: 1px solid #e3ddd0;
+    background: #fff;
+  }
+
+  .ks-print__img {
+    width: 100%;
+    max-height: 4.2in;
+    object-fit: contain;
+  }
+
+  .ks-print__item--note blockquote {
+    padding-inline-start: 0.14in;
+    border-inline-start: 4px solid #a8301d;
+    font-family: var(--font-serif);
+    font-size: 12pt;
+    white-space: pre-wrap;
+  }
+
+  .ks-print__file {
+    padding: 0.14in;
+    border: 1px dashed #b9b09e;
+    font-family: var(--font-mono);
+    font-size: 9pt;
+  }
+
+  .ks-print__item figcaption {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 10pt;
+  }
+
+  .ks-print__time {
+    margin-inline-end: 0.08in;
+    font-family: var(--font-mono);
+    font-style: normal;
+    font-size: 8pt;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+}
