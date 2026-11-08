@@ -1,0 +1,113 @@
+@layer components {
+  .ks-dialog {
+    width: min(720px, 100% - 2rem);
+    max-height: min(92dvh, 100% - 2rem);
+    padding: 0;
+    border: 0;
+    border-radius: var(--radius-l);
+    background: var(--color-surface);
+    color: var(--color-ink);
+    box-shadow: var(--shadow-lift);
+  }
+
+  .ks-dialog::backdrop {
+    background: rgb(20 18 14 / 0.55);
+    backdrop-filter: blur(2px);
+  }
+
+  .ks-dialog[open] {
+    animation: ks-dialog-in var(--duration) var(--ease-out);
+  }
+
+  @keyframes ks-dialog-in {
+    from {
+      opacity: 0;
+      transform: translateY(12px) scale(0.98);
+    }
+  }
+
+  .ks-form {
+    display: grid;
+    gap: var(--space-m);
+    padding: var(--space-l);
+    container-type: inline-size;
+  }
+
+  .ks-form__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-s);
+  }
+
+  .ks-form__header h2 {
+    font-size: var(--step-2);
+  }
+
+  .ks-form__grid {
+    display: grid;
+    gap: var(--space-s);
+  }
+
+  @container (min-width: 520px) {
+    .ks-form__grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .ks-form__footer {
+    display: flex;
+    justify-content: flex-end;
+    padding-block-start: var(--space-xs);
+    border-block-start: 1px solid var(--color-line);
+  }
+
+  .ks-choices {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2xs);
+  }
+
+  .ks-choice {
+    position: relative;
+  }
+
+  .ks-choice__input {
+    position: absolute;
+    opacity: 0;
+    inset: 0;
+    margin: 0;
+    cursor: pointer;
+  }
+
+  .ks-choice__label {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2xs);
+    min-height: 44px;
+    padding: 0.4rem 0.9rem;
+    border: 1.5px solid var(--color-line);
+    border-radius: 999px;
+    font-size: var(--step--1);
+    cursor: pointer;
+  }
+
+  .ks-choice__input:checked + .ks-choice__label {
+    border-color: var(--color-ink);
+    background: var(--color-ink);
+    color: var(--color-paper);
+  }
+
+  .ks-choice__input:focus-visible + .ks-choice__label {
+    outline: 3px solid var(--color-focus);
+    outline-offset: 2px;
+  }
+
+  .ks-swatch {
+    width: 1.1rem;
+    height: 1.1rem;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--ks-paper) 0 50%, var(--ks-accent) 50% 100%);
+    box-shadow: inset 0 0 0 1.5px var(--ks-ink);
+  }
+}

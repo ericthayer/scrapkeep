@@ -1,0 +1,59 @@
+@layer components {
+  ks-story {
+    display: block;
+    container-type: inline-size;
+  }
+
+  .ks-story {
+    display: grid;
+    gap: var(--space-xl);
+  }
+
+  .ks-story__day {
+    display: grid;
+    gap: var(--space-m);
+  }
+
+  .ks-story__day-heading {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--space-xs);
+    padding-block: var(--space-2xs);
+    background: var(--color-paper);
+    font-size: var(--step-1);
+    border-block-end: 2px solid var(--color-ink);
+  }
+
+  .ks-story__day-number {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: var(--step-2);
+    line-height: 1;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+  }
+
+  .ks-story__items {
+    display: grid;
+    gap: var(--space-l);
+    align-items: start;
+  }
+
+  @container (min-width: 620px) {
+    .ks-story__items {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  .ks-story__empty {
+    padding: var(--space-l);
+    border: 2px dashed var(--color-line);
+    border-radius: var(--radius-l);
+    color: var(--color-ink-muted);
+  }
+}
